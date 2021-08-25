@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--
+        always 始终展示在工具栏上
+        ifRoom 如果空间足够就展示在状态栏上，不然就折叠
+        never 始终折叠
+    -->
+    <item
+        android:id="@+id/toolbar_menu_disable"
+        android:icon="@drawable/ic_edge_to_edge_disable_24dp"
+        android:title="add"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/toolbar_menu_edit"
+        android:icon="@drawable/ic_edit_vd_theme_24dp"
+        android:title="add"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/toolbar_menu_fav"
+        android:icon="@drawable/ic_favorite_vd_theme_24px"
+        android:title="add"
+        app:showAsAction="never"/>
+</menu>

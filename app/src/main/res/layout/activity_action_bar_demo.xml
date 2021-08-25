@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".actionbar.ActionBarDemoActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar1"
+        style="@style/Widget.MaterialComponents.Toolbar.Surface"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar2"
+        style="@style/Widget.MaterialComponents.Toolbar.Surface"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:menu="@menu/toolbar_menu1"
+        app:navigationIcon="@drawable/ic_close_vd_theme_24px"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/teal_200"
+        app:subtitleTextColor="@color/purple_700"
+        app:subtitle="@string/app_name"
+        app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:subtitleTextAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:elevation="5dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar1" />
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar3"
+        style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:menu="@menu/toolbar_menu1"
+        app:navigationIcon="@drawable/ic_close_vd_theme_24px"
+        app:title="@string/app_name"
+        app:subtitle="中华人民共和国万岁"
+        app:titleCentered="true"
+        app:subtitleCentered="true"
+        app:layout_constraintTop_toBottomOf="@id/toolbar2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
