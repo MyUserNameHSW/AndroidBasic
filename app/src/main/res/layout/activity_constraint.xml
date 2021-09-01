@@ -113,7 +113,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_1">
 
-            <ImageView
+            <androidx.constraintlayout.utils.widget.ImageFilterView
                 android:id="@+id/iv_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -121,16 +121,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@mipmap/ic_launcher" />
+                app:srcCompat="@mipmap/ic_launcher"
+                app:roundPercent="1"/>
 
-            <View
+            <androidx.constraintlayout.utils.widget.ImageFilterView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:background="@color/purple_700"
+                android:background="@android:color/holo_red_light"
                 app:layout_constraintCircle="@id/iv_2"
                 app:layout_constraintCircleAngle="45"
-                app:layout_constraintCircleRadius="50dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintCircleRadius="40dp"
+                tools:ignore="MissingConstraints"
+                app:roundPercent="1"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -217,7 +219,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_1">
+            app:layout_constraintTop_toBottomOf="@id/cl_5">
 
             <androidx.constraintlayout.widget.Barrier
                 android:layout_width="wrap_content"
