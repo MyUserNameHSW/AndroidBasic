@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".constraint.ConstraintActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!--    成组批量控制view的展示，只能控制隐藏显示其他属性的不行。分组后就不用每个view都设置一遍显示隐藏了    -->
+            <androidx.constraintlayout.widget.Group
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:constraint_referenced_ids="tv_1, tv_2" />
+
+            <!--   goneMargin 好像对边界的元素并不起作用
+                垂直居中就是top和bottom指定好边界就行
+                -->
+            <ImageView
+                android:id="@+id/iv_1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/ic_launcher_round"
+                app:layout_constraintBottom_toBottomOf="@id/tv_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_1"
+                app:layout_goneMarginStart="30dp" />
+
+            <TextView
+                android:id="@+id/tv_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@id/iv_1"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="这个是大标题" />
+            <!--goneMargin 在显示时没有margin 隐藏时margin才会出现-->
+            <TextView
+                android:id="@+id/tv_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@id/tv_1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginStart="30dp"
+                android:text="xxx" />
+
+            <TextView
+                android:id="@+id/tv_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                app:layout_constraintStart_toEndOf="@id/tv_3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginStart="30dp"
+                android:text="ooo" />
+
+            <TextView
+                android:id="@+id/tv_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/iv_1"
+                app:layout_constraintTop_toBottomOf="@id/iv_1"
+                android:text="这个是小标题" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--    layout_constraintHorizontal_bias 按比例进行偏移 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintDimensionRatio="2:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_3">
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/teal_200"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--  根据角度来设置view的相对位置，可应用于类似有新消息的小红点展示  -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintDimensionRatio="2:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_1">
+
+            <ImageView
+                android:id="@+id/iv_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_launcher" />
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@color/purple_700"
+                app:layout_constraintCircle="@id/iv_2"
+                app:layout_constraintCircleAngle="45"
+                app:layout_constraintCircleRadius="50dp"
+                tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--  layout_constraintDimensionRatio 设置宽高比。
+        默认是宽：高  前面加上H(H,1:2) 就是高：宽，H(H,1:2)就是默认宽：高-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/teal_200"
+            app:layout_constraintDimensionRatio="2:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_2">
+
+            <View
+                android:id="@+id/v_1"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:background="@color/purple_700"
+                app:layout_constraintDimensionRatio="H,1:2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/v_2"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:background="@color/purple_200"
+                app:layout_constraintDimensionRatio="W,1:2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_4">
+
+            <View
+                android:id="@+id/v_3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/teal_700"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintEnd_toStartOf="@id/v_4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <View
+                android:id="@+id/v_4"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/teal_200"
+                app:layout_constraintStart_toEndOf="@id/v_3"
+                app:layout_constraintEnd_toStartOf="@id/v_5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <View
+                android:id="@+id/v_5"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/purple_200"
+                app:layout_constraintStart_toEndOf="@id/v_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
