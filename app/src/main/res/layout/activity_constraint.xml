@@ -42,41 +42,41 @@
                 android:id="@+id/tv_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="这个是大标题"
                 android:textSize="30sp"
                 android:visibility="gone"
                 app:layout_constraintStart_toEndOf="@id/iv_1"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="这个是大标题" />
+                app:layout_constraintTop_toTopOf="parent" />
             <!--goneMargin 在显示时没有margin 隐藏时margin才会出现-->
             <TextView
                 android:id="@+id/tv_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="xxx"
                 android:textSize="30sp"
                 android:visibility="gone"
                 app:layout_constraintStart_toEndOf="@id/tv_1"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_goneMarginStart="30dp"
-                android:text="xxx" />
+                app:layout_goneMarginStart="30dp" />
 
             <TextView
                 android:id="@+id/tv_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="ooo"
                 android:textSize="30sp"
                 app:layout_constraintStart_toEndOf="@id/tv_3"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_goneMarginStart="30dp"
-                android:text="ooo" />
+                app:layout_goneMarginStart="30dp" />
 
             <TextView
                 android:id="@+id/tv_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="这个是小标题"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@id/iv_1"
-                app:layout_constraintTop_toBottomOf="@id/iv_1"
-                android:text="这个是小标题" />
+                app:layout_constraintTop_toBottomOf="@id/iv_1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!--    layout_constraintHorizontal_bias 按比例进行偏移 -->
@@ -166,12 +166,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+        <!--   spread   spread_inside  packed 三种属性的调试   -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_4">
 
             <View
@@ -179,33 +181,85 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@color/teal_700"
-                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/v_4"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <View
                 android:id="@+id/v_4"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@color/teal_200"
-                app:layout_constraintStart_toEndOf="@id/v_3"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/v_5"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintStart_toEndOf="@id/v_3"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <View
                 android:id="@+id/v_5"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@color/purple_200"
-                app:layout_constraintStart_toEndOf="@id/v_4"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintStart_toEndOf="@id/v_4"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+<!--   为分组的元素制定边界     -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_1">
+
+            <androidx.constraintlayout.widget.Barrier
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/barrier"
+                app:barrierDirection="end"
+                app:constraint_referenced_ids="tv_5, tv_6"/>
+
+
+            <TextView
+                android:id="@+id/tv_5"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="姓名"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_6"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="身份证号码"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_5" />
+
+            <EditText
+                android:id="@+id/et_1"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:hint="请输入姓名"
+                app:layout_constraintStart_toEndOf="@id/barrier"/>
+
+            <EditText
+                android:id="@+id/et_2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:hint="请输入姓名"
+                app:layout_constraintTop_toBottomOf="@id/et_1"
+                app:layout_constraintStart_toEndOf="@id/barrier"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
